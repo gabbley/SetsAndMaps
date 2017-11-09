@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 
 public class DocumentIndex extends ArrayList<IndexEntry> {
+	
+	private TreeMap<String, IndexEntry>();
+	
 
 	public DocumentIndex() { //will u need? idk
 		super();
@@ -10,11 +13,13 @@ public class DocumentIndex extends ArrayList<IndexEntry> {
 		super(size);
 	}
 
+	//TODO addWord not needed?
 	public void addWord(String word, int num) {
 		int insert = foundOrInserted(word);
 		this.get(insert).add(num);
 	}
 
+	//
 	public void addAllWords(String str, int num) {
 		String[] strArr = str.split("\\W+");
 		for (String word : strArr){
