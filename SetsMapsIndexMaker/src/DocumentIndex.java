@@ -1,53 +1,26 @@
-import java.util.ArrayList;
+import java.util.TreeMap;
 
-public class DocumentIndex extends ArrayList<IndexEntry> {
-	
-	private TreeMap<String, IndexEntry>();
-	
+public class DocumentIndex extends TreeMap<String, IndexEntry> {
 
-	public DocumentIndex() { //will u need? idk
+	private TreeMap<String, IndexEntry> list;
+
+	public DocumentIndex() {
 		super();
 	}
 
-	public DocumentIndex(int size) {
-		super(size);
-	}
-
-	//TODO addWord not needed?
 	public void addWord(String word, int num) {
-		int insert = foundOrInserted(word);
-		this.get(insert).add(num);
+		if (this.containsKey(word))
+			this.get(word).add(num);
+		else
+			this.put(word, new IndexEntry(word));
 	}
 
-	//
 	public void addAllWords(String str, int num) {
 		String[] strArr = str.split("\\W+");
-		for (String word : strArr){
-			if(!word.equals(""))
-			addWord(word, num);
+		for (String word : strArr) {
+			if (!word.equals(""))
+				addWord(word, num);
 		}
-	}
-
-	private int foundOrInserted(String word) {
-		for (int i = 0; i < this.size(); i++) {
-			String findWord = this.get(i).getWord();
-
-			// if word to find already has index entry
-			if (findWord.equalsIgnoreCase(word)) {
-				return i;
-			}
-
-			// if index entry doesn't exist, inserts index entry alphabetically
-			else if (findWord.compareToIgnoreCase(word) > 0) {
-				this.add(i, new IndexEntry(word));
-				return i;
-			}
-
-		}
-
-		// otherwise just add to the end
-		this.add(new IndexEntry(word));
-		return this.size()-1; //returns new index
 	}
 
 }

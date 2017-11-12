@@ -60,7 +60,7 @@ public class IndexMaker
     // Save index:
 
     for (IndexEntry entry : index)
-      outputFile.println(entry);
+     outputFile.println(entry);
 
     // Finish:
 

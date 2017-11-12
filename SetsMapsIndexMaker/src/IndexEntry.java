@@ -1,9 +1,9 @@
-import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class IndexEntry {
 	
-	private String word;
-	private TreeSet<Integer> numsList;
+	public String word;
+	public TreeSet<Integer> numsList;
 	
 	public IndexEntry(){
 		word = "";
