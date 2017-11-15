@@ -1,3 +1,4 @@
+
 /**
  * This program takes a text file, creates an index (by line numbers)
  *  for all the words in the file and writes the index
@@ -10,84 +11,76 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.IOException;
+import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
 
-public class IndexMaker
-{
-  public static void main(String[] args) throws IOException
-  {
-	  
-    Scanner keyboard = new Scanner(System.in);
-    String fileName;
+public class IndexMaker {
+	public static void main(String[] args) throws IOException {
 
-    // Open input file:
+		Scanner keyboard = new Scanner(System.in);
+		String fileName;
 
-    if (args.length > 0) //if file is provided as an argument
-      fileName = args[0];
-    else
-    {
-      System.out.print("\nEnter input file name: ");
-      fileName = keyboard.nextLine().trim();
-    }
+		// Open input file:
 
-    BufferedReader inputFile = //already throws a filenotfoundexception
-                 new BufferedReader(new FileReader(fileName), 1024);
-    
+		if (args.length > 0) // if file is provided as an argument
+			fileName = args[0];
+		else {
+			System.out.print("\nEnter input file name: ");
+			fileName = keyboard.nextLine().trim();
+		}
 
-    // Create output file:
+		BufferedReader inputFile = // already throws a filenotfoundexception
+				new BufferedReader(new FileReader(fileName), 1024);
 
-    if (args.length > 1)
-      fileName = args[1];
-    else
-    {
-      System.out.print("\nEnter output file name: ");
-      fileName = keyboard.nextLine().trim();
-    }
+		// Create output file:
 
-    PrintWriter outputFile =
-                 new PrintWriter(new FileWriter(fileName));
+		if (args.length > 1)
+			fileName = args[1];
+		else {
+			System.out.print("\nEnter output file name: ");
+			fileName = keyboard.nextLine().trim();
+		}
 
-    // Create index:
+		PrintWriter outputFile = new PrintWriter(new FileWriter(fileName));
 
-    DocumentIndex index = new DocumentIndex();
+		// Create index:
 
-    String line;
-    int lineNum = 0;
-    while ((line = inputFile.readLine()) != null)
-    {
-      lineNum++;
-      index.addAllWords(line, lineNum);
-    }
+		DocumentIndex index = new DocumentIndex();
 
-    // Save index:
+		String line;
+		int lineNum = 0;
+		while ((line = inputFile.readLine()) != null) {
+			lineNum++;
+			index.addAllWords(line, lineNum);
+		}
 
-/*    while (index.)
-     outputFile.println(entry);
-    
-    for(Map.Entry<String,Integer> entry : treeMap.entrySet()) {
-    	  String key = entry.getKey();
-    	  Integer value = entry.getValue();
+		// Save index:
+		//https://stackoverflow.com/questions/1318980/how-to-iterate-over-a-treemap
 
-    	  System.out.println(key + " => " + value);
-    	}*/
+		Set<String> keys = index.keySet();
+		for (String key : keys) {
+			
+			IndexEntry value = index.get(key);
+outputFile.println(value);
+		}
 
-    // Finish:
+		// Finish:
 
-    inputFile.close();
-    outputFile.close();
+		inputFile.close();
+		outputFile.close();
 
-    keyboard.close();
-    System.out.println("Done.");
-  }
-  
-  //TODO check for non-existent input file
-  //TODO existing output file
-  //TODO empty input file
-  //TODO input file blank lines
-  //TODO input file with lines taht have leading spaces or punctuation
-  //TODO input file with multiple occurrence of a word ont eh same line
-  //TODO input file with the same word on diff lines
-  //TODO input file of all the same word, multiple times, same line, mult lines
-  
-  
+		keyboard.close();
+		System.out.println("Done.");
+	}
+
+	// TODO check for non-existent input file
+	// TODO existing output file
+	// TODO empty input file
+	// TODO input file blank lines
+	// TODO input file with lines taht have leading spaces or punctuation
+	// TODO input file with multiple occurrence of a word ont eh same line
+	// TODO input file with the same word on diff lines
+	// TODO input file of all the same word, multiple times, same line, mult lines
+
 }

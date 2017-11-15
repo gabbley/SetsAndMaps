@@ -1,3 +1,0 @@
-there are two words on two lines
-and i think that if he and i think together
-then we can successfully make this code work

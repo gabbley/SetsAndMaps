@@ -12,10 +12,17 @@ public class IndexEntry {
 
 	public IndexEntry(String word) {
 		this.word = word;
+		numsList = new TreeSet<Integer>();
+	}
+	
+	public IndexEntry(String word, int num) {
+		this.word = word;
+		numsList = new TreeSet<Integer>();
+		numsList.add(num);
 	}
 
 	public void add(int num) {
-		if (!numsList.contains(word))
+		if (!numsList.contains(num))
 			numsList.add(num);
 	}
 
@@ -24,7 +31,7 @@ public class IndexEntry {
 	}
 
 	public String toString() {
-		return getWord() + " " + numsList.toString();
+		return (getWord() + " " + numsList.toString()).toUpperCase();
 	}
 
 }

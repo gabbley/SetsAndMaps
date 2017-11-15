@@ -12,7 +12,7 @@ public class DocumentIndex extends TreeMap<String, IndexEntry> {
 		if (this.containsKey(word))
 			this.get(word).add(num);
 		else
-			this.put(word, new IndexEntry(word));
+			this.put(word, new IndexEntry(word, num));
 	}
 
 	public void addAllWords(String str, int num) {
