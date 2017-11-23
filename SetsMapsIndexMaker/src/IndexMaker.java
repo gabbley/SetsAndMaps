@@ -56,13 +56,13 @@ public class IndexMaker {
 		}
 
 		// Save index:
-		//https://stackoverflow.com/questions/1318980/how-to-iterate-over-a-treemap
+		// https://stackoverflow.com/questions/1318980/how-to-iterate-over-a-treemap
 
 		Set<String> keys = index.keySet();
 		for (String key : keys) {
-			
+
 			IndexEntry value = index.get(key);
-outputFile.println(value);
+			outputFile.println(value);
 		}
 
 		// Finish:
@@ -81,6 +81,7 @@ outputFile.println(value);
 	// TODO input file with lines taht have leading spaces or punctuation
 	// TODO input file with multiple occurrence of a word ont eh same line
 	// TODO input file with the same word on diff lines
-	// TODO input file of all the same word, multiple times, same line, mult lines
+	// TODO input file of all the same word, multiple times, same line, mult
+	// lines
 
 }
