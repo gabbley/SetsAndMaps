@@ -1,5 +1,9 @@
 
 /**
+ * <h1>IndexMaker</h1>
+ * <br/><br/>
+ * @author not Gabby Baniqued, only partially
+ *
  * This program takes a text file, creates an index (by line numbers)
  *  for all the words in the file and writes the index
  *  into the output file.  The program takes input and output file names
@@ -14,6 +18,7 @@ import java.io.IOException;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
+
 
 public class IndexMaker {
 	public static void main(String[] args) throws IOException {
@@ -74,14 +79,5 @@ public class IndexMaker {
 		System.out.println("Done.");
 	}
 
-	// TODO check for non-existent input file
-	// TODO existing output file
-	// TODO empty input file
-	// TODO input file blank lines
-	// TODO input file with lines taht have leading spaces or punctuation
-	// TODO input file with multiple occurrence of a word ont eh same line
-	// TODO input file with the same word on diff lines
-	// TODO input file of all the same word, multiple times, same line, mult
-	// lines
 
 }
